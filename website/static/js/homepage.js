@@ -13,3 +13,31 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("comment_submission").disabled = false;
             }})
 })
+
+// FUNCTIONS --------------------------------------------------------------------
+
+function get_comment() {
+
+    let comment = document.getElementById("comment_collection").value;
+
+    fetch("/submit_comment", {
+
+        method : "POST",
+        headers : {
+            "Content-Type" : "application/json"
+        },
+        body : JSON.stringify({
+            comment : comment
+        })
+    })
+
+    .then(response => response.json())
+    .then(data => {
+        console.log("server response : ", data);
+        document.getElementById("thanks").classList.remove("invisible");
+    })
+    .catch(error => {
+        console.error("error! : ", error);
+    });
+
+}

@@ -25,7 +25,7 @@
 
             <div class = "row mb-12 mt-3">
                 <div class = "col-md-4">
-                    <p>what do you have to say about me? as a statement on my person or abilities just be brutally honest please.</p>
+                    <p>what do you have to say about me? as a statement on my person or abilities just be brutally honest please. (anonymous!)</p>
                 </div>
                 <div class = "col-md-8">
                     <textarea class = "form-control" id = "comment_collection" placeholder = "max of 300 chars, ex. 'audrey if i could have you for my own it there would be no greater joy!!!'" maxlength = "300"></textarea>
@@ -33,7 +33,11 @@
             </div>
 
             <div class = "row mb-12 mt-3">
-                <button type = "submit" id = "comment_submission" disabled>submit your comment!</button>
+                <button type = "submit" id = "comment_submission" onclick = "get_comment()" disabled>submit your comment!</button>
+            </div>
+
+            <div class = "row mb-12 mt-3 invisible" id = "thanks">
+                <p class = "text-center">thanks for your submission! reload the page and you'll see it added to the list</p>
             </div>
 
             <div class = "row mb-12 mt-3 invisible" id = "comment_reflection">
