@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mad-movs</title>
+    <title>FEEDBACK.PORTAL</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
-    <script src = "{{ url_for('static', filename = 'js/index.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}">
+    <script src = "{{ url_for('static', filename = 'js/homepage.js') }}"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,17 +23,17 @@
             <h2 class="text-center mb-4">im prepping for my interview</h2>
             <p class="text-center">im gonna try to add some database integration or something</p>
 
-            <div class = "row mb-12 mt-3" id = "comment_collection">
+            <div class = "row mb-12 mt-3">
                 <div class = "col-md-4">
                     <p>what do you have to say about me? as a statement on my person or abilities just be brutally honest please.</p>
                 </div>
                 <div class = "col-md-8">
-                    <textarea class = "form-control" id = "input_genre" placeholder = "max of 300 chars, ex. 'audrey if i could have you for my own it there would be no greater joy!!!'" maxlength = "300"></textarea>
+                    <textarea class = "form-control" id = "comment_collection" placeholder = "max of 300 chars, ex. 'audrey if i could have you for my own it there would be no greater joy!!!'" maxlength = "300"></textarea>
                 </div>
             </div>
 
-            <div class = "row mb-12 mt-3" id = "comment_submission">
-                <button type = "submit" disabled>submit your comment!</button>
+            <div class = "row mb-12 mt-3">
+                <button type = "submit" id = "comment_submission" disabled>submit your comment!</button>
             </div>
 
             <div class = "row mb-12 mt-3 invisible" id = "comment_reflection">
