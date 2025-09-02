@@ -14,7 +14,7 @@ def create_app():
     app.register_blueprint(main_blueprint)
 
     app.config["SQLALCHEMY_DATABASE_URI"] = (
-        os.environ.get("DATABASE_URL")
+        os.environ.get("JAWSDB_URL")
     )
 
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
