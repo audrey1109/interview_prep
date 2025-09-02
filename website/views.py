@@ -22,5 +22,3 @@ def submit_comment() :
     db.session.commit()
 
     return jsonify({"status": "success", "comment": comment})
-
-    
