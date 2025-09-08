@@ -1,0 +1,62 @@
+body {
+    background-image: url('/static/img/stock_background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    font-family: "Inconsolata", monospace;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 112.5;
+}
+
+.landing-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 10px;
+    height: 100vh; 
+}
+
+.cc1 {
+    background-color: cornflowerblue;
+    color: white;
+    padding: 1rem;
+}
+
+.cc2 {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+}
+
+.cc2 .box-1 {
+    background-color: salmon;
+}
+
+.cc2 .box-2 {
+    background-color: olive;
+}
+
+.cc2 .box-1, 
+.cc2 .box-2,
+.cc1 {    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    text-align: center;         
+}
+
+a:link {
+    color: whitesmoke;
+}
+
+a:visited {
+    color: white;
+}
+
+a:hover {
+    color: white;
+}
