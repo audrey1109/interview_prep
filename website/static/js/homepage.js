@@ -1,17 +1,49 @@
 
 // LISTENERS ----------------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", function() {
-    // this means theyre listening as soon as the page loads
-        document.getElementById("comment_collection").addEventListener("input", function() {
 
-            let text_len = this.value.length;
 
-            if (text_len == 0 ) {
-            document.getElementById("comment_submission").disabled = true;
+    // shows comments
+    // let comments = JSON.parse(document.getElementById("pagedata").dataset.comments);
+    let rawComments = document.getElementById("pagedata").dataset.comments;
+    console.log("Raw comments:", rawComments);
+    let comments = JSON.parse(rawComments);
+    console.log("Parsed comments:", comments);
+    // console.log(comments);
+    for (let i = 0; i < comments.length; i++) {
+        console.log(comments[i]);
+    }
+    let com_container = document.getElementById("com_continer");
+    com_container.classList.remove("invisible");
 
-            } else {
-            document.getElementById("comment_submission").disabled = false;
-            }})
+    if (comments.length != 0 ) {
+
+        // let com_container = this.documentElement("com_continer");
+
+        for (let i = 0; i < comments.length; i++) {
+
+            const element = document.createElement("p");
+            element.textContent = comments[i];
+
+            com_container.appendChild(element);
+        }
+    } else {
+
+        const element = document.createElement("p");
+        element.textContent = "failure";
+        com_container.appendChild(element);
+    }
+    
+
+    document.getElementById("comment_collection").addEventListener("input", function() {
+        // determins whether or not the button is enabled
+        let text_len = this.value.length;
+
+        if (text_len == 0 ) {
+        document.getElementById("comment_submission").disabled = true;
+        } else {
+        document.getElementById("comment_submission").disabled = false;
+        }})
 })
 
 // FUNCTIONS --------------------------------------------------------------------

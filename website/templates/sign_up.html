@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
+        <title>ARRIVE</title>
+
+        <link rel = "stylesheet" href = "{{ url_for('static', filename = 'css/homepage.css') }}">
+        <script src = "{{ url_for('static', filename = 'js/sign_up.js') }}"></script>
+
+        <link rel = "preconnect" href = "https://fonts.googleapis.com">
+        <link rel = "preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href = "https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@112.5,200..900&display=swap" rel = "stylesheet">
+        <link href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel = "stylesheet">
+        <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </head>
+
+    <body>
+
+        <div class = "container">
+            <div class = "card">
+                <h2>sign up</h2>
+                <form method = "POST">
+                    <div class = "form-group">
+                        <label for = "username">username</label>
+                        <input type = "text" placeholder = "username" name = "username" required>
+                    </div>
+                    <div class = "form-group">
+                        <label for = "email">email</label>
+                        <input type = "text" placeholder = "email" name = "email" required>
+                    </div>
+                    <div class = "form-group">
+                        <label for = "password">password</label>
+                        <input type = "password" placeholder = "password" name = "password" name = "password" required>
+                    </div>
+                    <div class = "form-group">
+                        <label for = "conf-password"> confirm password</label>
+                        <input type = "password" placeholder = "password" name = "confirm-password" required>
+                    </div>
+                    <div>
+                        <button type = "submit" class = "btn btn-primary w-100">sign up</button>
+                    </div>
+                </form>
+
+            {% if case == "conf" %}
+
+                <script>
+
+                    alert("confirmation password doesn't match");
+                    // window.location.href = "{{ url_for('pf.sign_up') }}";
+
+                </script>
+
+            {% elif case == "user_taken" %}
+
+                <script>
+
+                    alert("sorry! that username has been taken!");
+
+                </script>
+
+            {% elif case == "email_taken" %}
+
+                <script>
+
+                    alert("that email has been previously associated with an account! have we met before?");
+
+                </script>
+
+            {% elif case == "success" %}
+
+                <script>
+
+                    alert("signup successful! be sure to confirm your email address (TO BE ADDED)");
+                    window.location.href = "{{ url_for('main.homepage') }}";
+
+                </script>
+
+            {% endif %}
+            </div>
+      </div>
+    </body>
+
+</html>
