@@ -1,5 +1,10 @@
+/* 
+landing_page.css - audrey palmer
+
+defines css for the landing page
+*/
+
 body {
-    background-image: url('/static/img/stock_background.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
