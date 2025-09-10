@@ -8,7 +8,8 @@ of other functions to them other than hosting links
     the same file, it got egregiously long and confusing
 '''
 
-from flask import Blueprint, render_template, jsonify, redirect, request, url_for
+from flask import (Blueprint, render_template, jsonify, redirect, request, 
+                   session, url_for)
 from flask_login import current_user, login_required
 import requests
 import os
@@ -38,4 +39,6 @@ def user_landing():
     page = defining_absent_page('user_landing')
     increment_page_views(page)
 
-    return render_template('user_landing.html')
+    user = User.query.filter_by(id = session["user_id"]).first()
+
+    return render_template('user_landing.html', admin_status = user.admin_status)

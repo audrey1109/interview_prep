@@ -91,7 +91,7 @@ def login() :
             # defining the user within the session
             session["user_id"] = user.id
             login_user(user)
-            return render_template("login.html", case = "success")
+            return render_template("login.html", case = "success", admin_status = user.admin_status)
         
         elif user and not user.check_password(password = password) :
             # wrong password
