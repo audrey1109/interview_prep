@@ -10,21 +10,28 @@ with function intensive work in their definition
 
 from datetime import datetime, timezone
 from flask_login import login_user, login_required, logout_user
-from flask import Blueprint, flash, render_template, jsonify, redirect, request, url_for
+from flask import (Blueprint, flash, jsonify, render_template, redirect, 
+                   request, session, url_for)
 import requests
 import os
 
 from .database import db
+from .helper_functions import (defining_absent_page, increment_page_views)
 from .models import User, Page, Visit
+
 
 fp = Blueprint("fp", __name__)
 
 
-# USER FUNCTIONS ----------------------------------------------------------------
+# actual pages -------------------------------------------------------------------
 
 @fp.route("/sign_up", methods = ["GET", "POST"])
 def sign_up() :
-    ''' returns the sign up page and defines what happens on a POST'''
+    ''' returns the sign up page and defines what happens on a POST '''
+
+    # defining the page in database if not previously
+    page = defining_absent_page('sign_up')
+    increment_page_views(page)
 
     # when (on the sign up page) a user attempts to sign up
     if request.method == "POST" :
@@ -66,7 +73,11 @@ def sign_up() :
 
 @fp.route("/login", methods = ["GET", "POST"])
 def login() :
-    ''' returns the login page and defines what happens on a POST'''
+    ''' returns the login page and defines what happens on a POST '''
+
+    # defining the page in database if not previously
+    page = defining_absent_page('login')
+    increment_page_views(page)
 
     # when (on the login page) a user attempts to log in
     if request.method == "POST" :
@@ -77,8 +88,10 @@ def login() :
 
         if user and user.check_password(password = password) :
             # success
+            # defining the user within the session
+            session["user_id"] = user.id
             login_user(user)
-            return render_template("login.html", case = "success")
+            return render_template("login.html", case = "success", admin_status = user.admin_status)
         
         elif user and not user.check_password(password = password) :
             # wrong password
@@ -89,3 +102,15 @@ def login() :
             return render_template("login.html", case = "none_user")
         
     return render_template("login.html")
+
+
+# weird routing conveniences --------------------------------------------------
+@fp.route("/log_out", methods = ["POST"])
+@login_required
+def log_out() :
+    ''' logs a user out, no actual page associated '''
+
+    logout_user()
+    session.clear()
+
+    return {"case" : "logged_out"} 

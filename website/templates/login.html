@@ -11,9 +11,6 @@ contains the html for my login page
         <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
         <title>RETURN</title>
 
-        <link rel = "stylesheet" href = "{{ url_for('static', filename = 'css/homepage.css') }}">
-        <script src = "{{ url_for('static', filename = 'js/homepage.js') }}"></script>
-
         <link rel = "preconnect" href = "https://fonts.googleapis.com">
         <link rel = "preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href = "https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@112.5,200..900&display=swap" rel = "stylesheet">
@@ -46,7 +43,7 @@ contains the html for my login page
                 <script>
 
                     alert("login successful :D");
-                    window.location.href = "{{ url_for('main.homepage') }}";
+                    window.location.href = "{{ url_for('bp.user_landing') }}";
 
                 </script>
 
